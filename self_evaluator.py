@@ -17,8 +17,13 @@ logger = logging.getLogger(__name__)
 class SelfEvaluator:
     """Class for evaluating the quality of generated mathematical reasoning."""
 
-    def __init__(self):
-        """Initialize the self-evaluator."""
+    def __init__(self, model=None, tokenizer=None):
+        """Initialize the self-evaluator.
+
+        Args:
+            model: Optional pre-loaded model to reuse (to avoid loading twice)
+            tokenizer: Optional pre-loaded tokenizer to reuse
+        """
         self.model_name = Config.EVALUATION_MODEL
         self.criteria = Config.EVALUATION_CRITERIA
         self.quality_threshold = Config.QUALITY_THRESHOLD
@@ -28,9 +33,12 @@ class SelfEvaluator:
         self.use_local_model = Config.USE_LOCAL_MODEL
 
         # Initialize model and tokenizer if using local model
-        self.model = None
-        self.tokenizer = None
-        if self.use_local_model:
+        self.model = model
+        self.tokenizer = tokenizer
+
+        # Only load a new model if one wasn't provided and we're using a local model
+        if self.use_local_model and (self.model is None or self.tokenizer is None):
+            logger.info("Loading evaluation model (this could be avoided by passing an existing model)")
             self.model, self.tokenizer = get_model_and_tokenizer(self.model_name)
 
     def evaluate_reasoning(self, problem, reasoning):

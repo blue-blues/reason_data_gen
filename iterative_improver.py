@@ -17,8 +17,13 @@ logger = logging.getLogger(__name__)
 class IterativeImprover:
     """Class for iteratively improving mathematical reasoning based on evaluation feedback."""
 
-    def __init__(self):
-        """Initialize the iterative improver."""
+    def __init__(self, model=None, tokenizer=None):
+        """Initialize the iterative improver.
+
+        Args:
+            model: Optional pre-loaded model to reuse (to avoid loading twice)
+            tokenizer: Optional pre-loaded tokenizer to reuse
+        """
         self.model_name = Config.REASONING_MODEL
         self.temperature = Config.TEMPERATURE
         self.max_tokens = Config.MAX_TOKENS
@@ -28,9 +33,12 @@ class IterativeImprover:
         self.use_local_model = Config.USE_LOCAL_MODEL
 
         # Initialize model and tokenizer if using local model
-        self.model = None
-        self.tokenizer = None
-        if self.use_local_model:
+        self.model = model
+        self.tokenizer = tokenizer
+
+        # Only load a new model if one wasn't provided and we're using a local model
+        if self.use_local_model and (self.model is None or self.tokenizer is None):
+            logger.info("Loading improvement model (this could be avoided by passing an existing model)")
             self.model, self.tokenizer = get_model_and_tokenizer(self.model_name)
 
     def generate_feedback(self, example):

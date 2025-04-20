@@ -93,18 +93,18 @@ class Config:
     # Memory optimization settings
     LOW_MEMORY_MODE = True  # Enable memory optimizations
     CLEANUP_BETWEEN_BATCHES = True  # Clean up memory between batches
-    MAX_GPU_MEMORY = "18GiB"  # Limit GPU memory usage to avoid OOM errors with MIG
+    MAX_GPU_MEMORY = "12GiB"  # Reduced from 18GiB to avoid OOM errors
     CPU_OFFLOAD = True  # Enable CPU offloading for layers that don't fit in GPU memory
 
     # Pipeline settings
-    MAX_ITERATIONS = 3  # Maximum number of improvement iterations
-    BATCH_SIZE = 4  # Increased batch size to better utilize GPU
+    MAX_ITERATIONS = 2  # Reduced from 3 to save memory
+    BATCH_SIZE = 1  # Reduced from 4 to avoid memory issues
     NUM_EXAMPLES = -1  # Process all available examples (-1 means all)
     PARALLEL_PROCESSING = True  # Enable parallel processing where possible
 
     # Reasoning generation settings
     TEMPERATURE = 0.6  # Recommended temperature for DeepSeek-R1 models
-    MAX_TOKENS = 8196  # Reduced to save memory
+    MAX_TOKENS = 4096  # Reduced from 8196 to save memory
     TOP_P = 0.95
     # Using a simple string with named parameter for maximum compatibility
     REASONING_PROMPT_TEMPLATE = "Solve the following mathematical problem step by step. Please reason step by step, and put your final answer within \\boxed{{}}. \n\nProblem: {problem}\n\n<think>"
