@@ -49,15 +49,15 @@ class SelfEvaluator:
         criteria_str = "\n".join([f"- {criterion}" for criterion in self.criteria])
 
         # Use a clean, properly formatted prompt without indentation issues
-        evaluation_prompt = ("Evaluate the following mathematical reasoning based on these criteria:\n"
-                           f"{criteria_str}\n\n"
-                           "For each criterion, provide a score from 0.0 to 1.0 and a brief explanation.\n\n"
-                           f"Problem: {problem}\n\n"
-                           f"Reasoning:\n{reasoning}\n\n"
-                           "<think>\n"
-                           "Carefully analyze the reasoning step by step. For each criterion, assign a score and explain your reasoning.\n"
-                           "</think>\n\n"
-                           "Evaluation:")
+        evaluation_prompt = f"Evaluate the following mathematical reasoning based on these criteria:\n"
+        evaluation_prompt += f"{criteria_str}\n\n"
+        evaluation_prompt += f"For each criterion, provide a score from 0.0 to 1.0 and a brief explanation.\n\n"
+        evaluation_prompt += f"Problem: {problem}\n\n"
+        evaluation_prompt += f"Reasoning:\n{reasoning}\n\n"
+        evaluation_prompt += f"<think>\n"
+        evaluation_prompt += f"Carefully analyze the reasoning step by step. For each criterion, assign a score and explain your reasoning.\n"
+        evaluation_prompt += f"</think>\n\n"
+        evaluation_prompt += f"Evaluation:"
 
         try:
             # Format the prompt

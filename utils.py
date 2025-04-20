@@ -334,6 +334,10 @@ def get_model_and_tokenizer(model_name=None, device=None, dtype=None, quantizati
 
 def format_prompt(prompt_template, **kwargs):
     """Format a prompt template with the given arguments."""
+    # If no kwargs are provided, return the template as is (already formatted)
+    if not kwargs:
+        return prompt_template
+
     # Format the prompt template
     try:
         # Try with named parameters

@@ -241,8 +241,15 @@ class IterativeImprover:
 
         return improved_examples
 
-    def run_improvement_loop(self, examples, evaluator, max_iterations=None):
-        """Run the full improvement loop until all examples are good enough or max iterations is reached."""
+    def run_improvement_loop(self, examples, evaluator, max_iterations=None, output_path=None):
+        """Run the full improvement loop until all examples are good enough or max iterations is reached.
+
+        Args:
+            examples: List of examples to improve
+            evaluator: Evaluator instance to use for evaluating improved examples
+            max_iterations: Maximum number of improvement iterations
+            output_path: Optional path to save intermediate results
+        """
         if max_iterations is None:
             max_iterations = self.max_iterations
 
@@ -262,12 +269,23 @@ class IterativeImprover:
                 break
 
             # Improve examples that need improvement
-            improved_examples = self.improve_batch(needs_improvement, evaluator)
+            improved_examples = self.improve_batch(needs_improvement, evaluator, output_path=output_path)
 
             # Combine good examples with improved examples for the next iteration
             current_examples = good_examples + improved_examples
 
+            # Save intermediate results if output path is provided
+            if output_path:
+                iteration_path = f"{output_path}.iteration_{iteration + 1}"
+                save_json(current_examples, iteration_path)
+                logger.info(f"Saved iteration {iteration + 1} results to {iteration_path}")
+
             logger.info(f"Completed improvement iteration {iteration + 1}: {len(good_examples)} good, {len(needs_improvement)} improved")
+
+        # Save final results if output path is provided
+        if output_path:
+            save_json(current_examples, output_path)
+            logger.info(f"Final improved examples saved to {output_path}")
 
         return current_examples
 
