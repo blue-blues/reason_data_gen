@@ -2,6 +2,17 @@
 
 A comprehensive pipeline for generating high-quality mathematical reasoning data using Chain-of-Thought (CoT) techniques and iterative self-improvement.
 
+## About
+
+This project aims to create a robust and efficient pipeline for generating high-quality mathematical reasoning data that can be used to train or fine-tune language models. By leveraging Chain-of-Thought (CoT) techniques and implementing an iterative self-improvement process, this pipeline produces step-by-step reasoning examples that help models learn how to solve complex mathematical problems.
+
+Key features:
+- **Flexible dataset support**: Works with multiple mathematical datasets including NuminaMath-1.5, GSM8K, MathQA, and more
+- **Distributed processing**: Supports multi-GPU setups for faster data generation
+- **Memory optimization**: Includes low-memory modes for processing large datasets
+- **Self-improvement**: Implements an iterative approach to refine and improve generated reasoning
+- **Quality evaluation**: Automatically evaluates the quality of generated reasoning
+
 ## Overview
 
 This pipeline implements a self-improving CoT data generation system that:
@@ -16,8 +27,8 @@ This pipeline implements a self-improving CoT data generation system that:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/mathematical-reasoning-pipeline.git
-cd mathematical-reasoning-pipeline
+git clone https://github.com/blue-blues/reason_data_gen.git
+cd reason_data_gen
 
 # Create a virtual environment
 python -m venv venv
