@@ -1,6 +1,6 @@
 # Mathematical Reasoning Data Pipeline
 
-A comprehensive pipeline for generating high-quality mathematical reasoning data using Chain-of-Thought (CoT) techniques and iterative self-improvement. This project enables the creation of step-by-step mathematical reasoning examples to enhance language model training, with support for multiple datasets and distributed processing.
+A comprehensive pipeline for generating high-quality mathematical reasoning data using Chain-of-Thought (CoT) techniques and iterative self-improvement.
 
 ## About
 

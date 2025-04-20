@@ -1,14 +1,5 @@
 # About Mathematical Reasoning Data Pipeline
 
-[![GitHub stars](https://img.shields.io/github/stars/blue-blues/reason_data_gen?style=social)](https://github.com/blue-blues/reason_data_gen/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/blue-blues/reason_data_gen?style=social)](https://github.com/blue-blues/reason_data_gen/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/blue-blues/reason_data_gen)](https://github.com/blue-blues/reason_data_gen/issues)
-[![GitHub license](https://img.shields.io/github/license/blue-blues/reason_data_gen)](https://github.com/blue-blues/reason_data_gen/blob/master/LICENSE)
-
-**Website**: [Project Documentation](https://github.com/blue-blues/reason_data_gen/wiki)
-
-**Topics**: mathematical-reasoning, chain-of-thought, data-generation, language-models, machine-learning, distributed-processing, pytorch, huggingface
-
 ## Project Purpose
 
 The Mathematical Reasoning Data Pipeline is designed to address the challenge of generating high-quality mathematical reasoning data for training and fine-tuning language models. While large language models (LLMs) have shown impressive capabilities across many domains, mathematical reasoning remains a challenging area that requires specialized training data with detailed step-by-step reasoning.

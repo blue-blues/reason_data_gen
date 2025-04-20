@@ -1,0 +1,13 @@
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 044b859..09db086 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,6 +1,6 @@[m
+ # Mathematical Reasoning Data Pipeline[m
+ [m
+[31m-A comprehensive pipeline for generating high-quality mathematical reasoning data using Chain-of-Thought (CoT) techniques and iterative self-improvement. This project enables the creation of step-by-step mathematical reasoning examples to enhance language model training, with support for multiple datasets and distributed processing.[m
+[32m+[m[32mA comprehensive pipeline for generating high-quality mathematical reasoning data using Chain-of-Thought (CoT) techniques and iterative self-improvement.[m
+ [m
+ ## About[m
+ [m
